@@ -1,0 +1,42 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Listar Periféricos{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Periféricos</h2>
+    {% if request.user.is_superuser %}
+    <a class="btn btn-primary mb-3" href="{% url 'CrearPeriferico' %}">Agregar Periférico</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for periferico in perifericos %}
+            <tr>
+                <td>{{ periferico.nombre }}</td>
+                <td>{{ periferico.tipo }}</td>
+                <td>{{ periferico.marca }}</td>
+                <td>${{ periferico.precio }}</td>
+                <td><img src="{{ periferico.imagen.url }}" alt="{{ periferico.nombre }}" style="width: 100px;"></td>
+                <td>
+                    {% if request.user.is_superuser %}
+                    <a class="btn btn-warning btn-sm" href="{% url 'ActualizarPeriferico' periferico.pk %}">Actualizar</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'BorrarPeriferico' periferico.pk %}">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

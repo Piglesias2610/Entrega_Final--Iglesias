@@ -1,0 +1,16 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Eliminar Funko{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Eliminar Funko</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>¿Estás seguro de que quieres eliminar el funko "{{ funko.nombre }}"?</p>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'funko_list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

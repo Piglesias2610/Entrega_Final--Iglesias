@@ -1,0 +1,24 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Editar Contraseña{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Editar Contraseña</h2>
+    
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+        
+        <!-- Formulario de cambio de contraseña -->
+        <div class="form-group mb-3">
+            {{ form.as_p }}
+        </div>
+        
+        <!-- Botón de actualización -->
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary btn-lg rounded-pill" value="Actualizar">
+        </div>
+    </form>
+</div>
+{% endblock contenidoQueCambia %}

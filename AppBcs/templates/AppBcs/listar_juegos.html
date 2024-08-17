@@ -1,0 +1,48 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Listado de Juegos{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Listado de Juegos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for juego in juegos %}
+            <tr>
+                <td>{{ juego.nombre }}</td>
+                <td>${{ juego.precio }}</td>
+                <td>
+                    {% if juego.imagen %}
+                    <img src="{{ juego.imagen.url }}" alt="{{ juego.nombre }}" width="100">
+                    {% else %}
+                    No disponible
+                    {% endif %}
+                </td>
+                <td>
+                    {% if request.user.is_superuser %}
+                    <a href="{% url 'ActualizarJuego' juego.pk %}" class="btn btn-warning btn-sm">Actualizar</a>
+                    <a href="{% url 'BorrarJuego' juego.pk %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este juego?');">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No hay juegos disponibles.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'CrearJuego' %}" class="btn btn-primary">Agregar Nuevo Juego</a>
+    {% endif %}
+</div>
+{% endblock %}

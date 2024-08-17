@@ -1,0 +1,38 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Listar Consolas{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Consolas</h2>
+    {% if request.user.is_superuser %}
+    <a class="btn btn-primary mb-3" href="{% url 'CrearConsola' %}">Agregar Consola</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consola in consolas %}
+            <tr>
+                <td>{{ consola.nombre }}</td>
+                <td>${{ consola.precio }}</td>
+                <td><img src="{{ consola.imagen.url }}" alt="{{ consola.nombre }}" style="width: 100px;"></td>
+                <td>
+                    {% if request.user.is_superuser %}
+                    <a class="btn btn-warning btn-sm" href="{% url 'ActualizarConsola' consola.pk %}">Actualizar</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'BorrarConsola' consola.pk %}">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "AppBcs/base.html" %}
+{% load static %}
+{% block titulo %} ZeusHouse/Inicio {% endblock %}
+
+{% block contenidoQueCambia %}
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 mb-3">¡Bienvenido a ZeusHouse!</h1>
+            <p class="lead mb-4">Descubre el mejor contenido en consolas, juegos, funkos y periféricos.</p>
+            <a href="#explore" class="btn btn-custom btn-lg">Explorar</a>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="content-section" id="explore">
+        <div class="container">
+            <h2 class="text-center mb-4">Explora Nuestro Mundo Gamer</h2>
+            <p class="text-center mb-5">Desde las últimas consolas hasta funkos exclusivos, tenemos todo lo que un verdadero gamer necesita.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Consolas</h5>
+                            <p class="card-text">Encuentra las mejores consolas para tus juegos favoritos.</p>
+                            <a href="#" class="btn btn-primary btn-lg">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Juegos</h5>
+                            <p class="card-text">Descubre una amplia variedad de juegos para todas las plataformas.</p>
+                            <a href="#" class="btn btn-primary btn-lg">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Funkos</h5>
+                            <p class="card-text">Colecciona las figuras Funko Pop! más exclusivas.</p>
+                            <a href="#" class="btn btn-primary btn-lg">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

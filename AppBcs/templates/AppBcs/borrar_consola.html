@@ -1,0 +1,18 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Eliminar Consola{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Eliminar Consola</h2>
+    <p>¿Estás seguro de que quieres eliminar la consola "{{ object.nombre }}"?</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="text-center">
+            <input type="submit" class="btn btn-danger" value="Eliminar">
+            <a class="btn btn-secondary" href="{% url 'ListarConsolas' %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

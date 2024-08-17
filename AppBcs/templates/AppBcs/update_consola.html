@@ -1,0 +1,19 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Actualizar Consola{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Actualizar Consola</h2>
+    <form action="" method="POST" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            {{ form.as_p }}
+        </div>
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary" value="Actualizar">
+        </div>
+    </form>
+</div>
+{% endblock %}

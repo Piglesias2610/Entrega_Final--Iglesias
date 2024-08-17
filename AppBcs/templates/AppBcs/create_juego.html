@@ -1,0 +1,21 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Gestionar Juego{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Gestionar Juego</h2>
+    
+    <!-- Crear Juego -->
+    <div class="mb-5">
+        <h3>Crear Nuevo Juego</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Crear Juego</button>
+        </form>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Listado de Funkos{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Listado de Funkos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funko in funkos %}
+            <tr>
+                <td>{{ funko.nombre }}</td>
+                <td>${{ funko.precio }}</td>
+                <td><img src="{{ funko.imagen.url }}" alt="{{ funko.nombre }}" width="100"></td>
+                <td>
+                    {% if request.user.is_superuser %}
+                    <a href="{% url 'ActualizarFunko' funko.pk %}" class="btn btn-warning btn-sm">Actualizar</a>
+                    <a href="{% url 'BorrarFunko' funko.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'CrearFunko' %}" class="btn btn-primary">Agregar Nuevo Funko</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'AppBcs/base.html' %}
+{% load static %}
+
+{% block titulo %}Eliminar Juego{% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Eliminar Juego</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>¿Estás seguro de que quieres eliminar el juego "{{ juego.nombre }}"?</p>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'juego_list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
